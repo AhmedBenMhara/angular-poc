@@ -1,5 +1,5 @@
 ##Angular A/C Monitoring
-(fichiers de projet Eclipse inclus !)
+(fichiers de projet Eclipse inclus !)  
 PoC Angular, avec Thingworx comme back-end.
 
 ###TODO
