@@ -1,16 +1,24 @@
 <!doctype html>
-<html ng-app="a/c">
+<html ng-app="btc">
 <head>
 	<meta charset="UTF-8"/>
 	<title>Hello, World!</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
 </head>
-<body>
+<body ng-controller="SensorController">
 	<div class="title">
 		<h1>HXPERIENCE A/C MONITORING</h1>
 	</div>
 	
-	
+	<div ng-controller="SensorController as sensorCtrl">
+		<!-- n'utiliser que les labels dans la liste pas les objets entiers -->
+		<select ng-model="sensorCtrl.cur" ng-options="s as s.place for s in sensorCtrl.sensors">
+			<option value="">Sélectionner un capteur</option>
+		</select>
+		<div class="infodiv">		
+			{{sensorCtrl.cur}}
+		</div>
+	</div>
 	
 	<!-- Angular / Order is important -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
