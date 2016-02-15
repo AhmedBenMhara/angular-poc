@@ -2,5 +2,27 @@ body {
 	margin: 0 auto;
 	padding: 0 2%;
 	background: #FBFBFB;
+}
+
+.title{
 	text-align: center;
+}
+
+.sensor {
+	position: relative;
+}
+
+.sensor select {
+	position: relative;
+	width: 30%;
+	display: inline-block;
+	margin-left: 8%;
+	font-size: 160%;	
+}
+
+.infodiv {
+	position: relative;
+	margin-left: 8%;
+	min-width: 50%;
+	display: inline-block;
 }
