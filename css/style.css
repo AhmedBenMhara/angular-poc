@@ -9,20 +9,61 @@ body {
 }
 
 .sensor {
-	position: relative;
+	position: absolute;
+	height: 140px;
+	width: 96%;
+}
+
+.sensor * {	
+	font-size: 24px;
+}
+
+.sensor .infodiv {
+	display: flex;
+	align-items: center;
+	height: 100%;
 }
 
 .sensor select {
-	position: relative;
-	width: 30%;
-	display: inline-block;
-	margin-left: 8%;
-	font-size: 160%;	
+	min-width: 300px;
+	margin-left: 11%;
+	height: 33%;
 }
 
-.infodiv {
-	position: relative;
-	margin-left: 8%;
-	min-width: 50%;
-	display: inline-block;
+.sensor .info {
+	min-width: 420px;
+	max-width: 42%;
+	margin-left: 11%;
+	height: 80%;
+	text-align: center;
 }
+
+.sensor .info > * {
+	display: inline-block;
+	height: 100%;
+	vertical-align: middle;
+	margin: 0;
+	padding: 0;
+}
+
+/*
+.info .temperature,
+.info .signal {
+	font-size: 150%;
+	font-weight: bold;
+	width: 48%;
+	vertical-align: middle;
+	border: 1px dashed;
+	margin: 0;
+	line-height: 78px;
+	display: inline
+}
+
+
+
+.info .temperature .mini {
+	font-size: 40%;
+	font-weight: normal;
+	line-height: -1;
+}
+*/
