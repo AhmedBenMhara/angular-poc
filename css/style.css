@@ -8,11 +8,6 @@ body {
 	text-align: center;
 }
 
-.sensor {
-	position: absolute;
-	height: 140px;
-	width: 96%;
-}
 
 .sensor * {	
 	font-size: 24px;
@@ -21,14 +16,23 @@ body {
 .sensor .infodiv {
 	display: flex;
 	align-items: center;
-	height: 100%;
 	margin: 0 auto;
 	justify-content: space-around;
+	position: absolute;
+	height: 140px;
+	width: 96%;
 }
 
 .sensor select {
 	min-width: 300px;
 	height: 33%;
+}
+
+option.alert {
+	color: red;
+}
+.good {
+	color: green;
 }
 
 .sensor .info {
@@ -63,25 +67,3 @@ body {
 	font-size: 42%;
 	font-weight: normal;
 }
-
-/*
-.info .temperature,
-.info .signal {
-	font-size: 150%;
-	font-weight: bold;
-	width: 48%;
-	vertical-align: middle;
-	border: 1px dashed;
-	margin: 0;
-	line-height: 78px;
-	display: inline
-}
-
-
-
-.info .temperature .mini {
-	font-size: 40%;
-	font-weight: normal;
-	line-height: -1;
-}
-*/
