@@ -16,13 +16,15 @@
 			<select ng-model="sensorCtrl.cur" ng-options="s as s.place for s in sensorCtrl.sensors">
 				<option value="">Sélectionner un capteur</option>
 			</select>
-			<div ng-show="sensorCtrl.cur" class="info">		
+			<div ng-show="sensorCtrl.cur" class="info" ng-class="{alert: sensorCtrl.cur.alert}">		
 				<p class="temperature">
 					{{sensorCtrl.cur.temperature}} °C
 					<br/><span class="mini">min: {{sensorCtrl.cur.lowLimit}} | max: {{sensorCtrl.cur.highLimit}}</span></p>
-				<span class="signal">
-					{{sensorCtrl.cur.signal}} dB</span>
-				<br/>				
+				<p class="signal">
+					{{sensorCtrl.cur.signal}} dB</p>
+				<br/>
+				<p class="date">
+					{{sensorCtrl.cur.lastData | date:"'reçu le 'dd/MM/yyyy' à 'HH:mm"}}</p>
 			</div>
 		</div>
 		<div class="graph"></div>

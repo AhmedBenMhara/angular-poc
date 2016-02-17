@@ -22,28 +22,46 @@ body {
 	display: flex;
 	align-items: center;
 	height: 100%;
+	margin: 0 auto;
+	justify-content: space-around;
 }
 
 .sensor select {
 	min-width: 300px;
-	margin-left: 11%;
 	height: 33%;
 }
 
 .sensor .info {
 	min-width: 420px;
 	max-width: 42%;
-	margin-left: 11%;
 	height: 80%;
 	text-align: center;
+	border: 2px #0F0 solid;
+}
+.sensor .info.alert {
+	border-color: #F00;
 }
 
-.sensor .info > * {
-	display: inline-block;
-	height: 100%;
-	vertical-align: middle;
+.sensor .info .date {
 	margin: 0;
-	padding: 0;
+}
+
+.sensor .info .temperature,
+.sensor .info .signal {
+	display: inline-block;
+	height: 50%;
+	vertical-align: middle;
+	padding: 21px 33px 0;
+	width: 160px;
+	margin: 0;
+	font-size: 160%;
+	font-weight: bold;
+	line-height: 12px;
+}
+
+.mini {
+	font-size: 42%;
+	font-weight: normal;
 }
 
 /*
