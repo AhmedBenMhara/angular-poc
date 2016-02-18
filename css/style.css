@@ -1,44 +1,59 @@
+[ng-cloak], .ng-hide{
+	display: none !important;
+}
+
 body {
 	margin: 0 auto;
 	padding: 0 2%;
 	background: #FBFBFB;
+	width: 96%;
+	position: absolute;
+	min-height: 90%;
 }
 
 .title{
 	text-align: center;
 }
 
-
-.sensor * {	
-	font-size: 24px;
+/*
+.sensor {
+	height: 100%
 }
+*/
 
 .sensor .infodiv {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
-	margin: 0 auto;
 	justify-content: space-around;
-	position: absolute;
-	height: 140px;
+	margin: 0 auto;
+	min-height: 140px;
+	max-height: 200px;
 	width: 96%;
+}
+
+.sensor .infodiv * {
+	font-size: 19pt;
 }
 
 .sensor select {
 	min-width: 300px;
-	height: 33%;
 }
 
+select.alert,
 option.alert {
 	color: red;
 }
-.good {
+select.good,
+option.good {
 	color: green;
+}
+option {
+	color: black;
 }
 
 .sensor .info {
-	min-width: 420px;
-	max-width: 42%;
-	height: 80%;
+	min-width: 460px;
 	text-align: center;
 	border: 2px #0F0 solid;
 }
@@ -53,17 +68,25 @@ option.alert {
 .sensor .info .temperature,
 .sensor .info .signal {
 	display: inline-block;
-	height: 50%;
-	vertical-align: middle;
-	padding: 21px 33px 0;
-	width: 160px;
-	margin: 0;
+	vertical-align: top;
+	margin: 19px 33px 8px;
 	font-size: 160%;
 	font-weight: bold;
-	line-height: 12px;
+	line-height: .42;
 }
 
 .mini {
-	font-size: 42%;
+	font-size: 42% !important;
 	font-weight: normal;
+}
+
+.sensor .graph {
+	display: flex;
+	/*flex-wrap: wrap;*/
+	/*align-items: stretch;*/
+	min-height: 400px;
+}
+.sensor .graph > * {
+	width: 100%;
+	max-height: 400px;
 }

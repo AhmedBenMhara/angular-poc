@@ -1,4 +1,5 @@
 (function(){
+	'use strict';
 	var app = angular.module('hxpDirectives',[])
 
 	//Directive that lets you define dynamically classes for ng-options
