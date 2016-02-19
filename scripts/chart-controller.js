@@ -1,6 +1,6 @@
 (function(){
 	
-	var app = angular.module('chartController',["chart.js"])
+	var app = angular.module('a/c')
 	
 	app.config(['ChartJsProvider', function (ChartJsProvider) {
 	    // Configure all charts
