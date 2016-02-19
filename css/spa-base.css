@@ -1,0 +1,22 @@
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	padding: 0 2%;
+	background: #FBFBFB;
+}
+
+.flex-column {
+	display: flex;
+	flex-flow: column nowrap;
+	min-height: 90%;
+}
+
+.filling-row {
+	flex: 1 1 auto;
+}
+.sized-row {
+	flex: 0 1 auto;
+}

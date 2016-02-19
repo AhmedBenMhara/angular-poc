@@ -5,14 +5,15 @@
 	<title>Hello, World!</title>
 	<link rel="stylesheet" href="css/angular-chart.css" type="text/css"/>
 	<link rel="stylesheet" href="css/style.css" type="text/css"/>
+	<link rel="stylesheet" href="css/spa-base.css" type="text/css"/>
 </head>
 <body>
 	<div class="title">
 		<h1>HXPERIENCE A/C MONITORING</h1>
 	</div>
 	
-	<div class="sensor" ng-controller="SensorController as sensorCtrl" ng-cloak>
-		<div class="infodiv" ng-show="sensorCtrl.cur">
+	<div class="flex-column" ng-controller="SensorController as sensorCtrl" ng-cloak>
+		<div class="infodiv sized-row" ng-show="sensorCtrl.cur">
 			<!-- n'utiliser que les labels dans la liste pas les objets entiers -->
 			<select ng-model="sensorCtrl.cur" ng-class="{alert : sensorCtrl.cur.alert, good : sensorCtrl.cur && !sensorCtrl.cur.alert}"
 				ng-options="s as s.place for s in sensorCtrl.sensors" hxp-option-class="{ 'alert' : alert, 'good' : !alert }"ng-cloak>
@@ -30,11 +31,11 @@
 					{{sensorCtrl.cur.lastData | date:"'reçu le 'dd/MM/yyyy' à 'HH:mm"}}</p>
 			</div>
 		</div>
-		<div class="graph" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
+		<div class="filling-row chart-container" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
 		<canvas id="line" class="chart chart-line" chart-data="lineCtrl.data" chart-labels="lineCtrl.labels" 
     		chart-legend="true" chart-series="lineCtrl.series" chart-click="lineCtrl.onClick"></canvas>
     	</div>
-		<div class="graph" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
+		<div class="filling-row chart-container" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
 		<canvas id="line" class="chart chart-line" chart-data="lineCtrl.data" chart-labels="lineCtrl.labels" 
     		chart-legend="true" chart-series="lineCtrl.series" chart-click="lineCtrl.onClick"></canvas>
     	</div>
@@ -43,12 +44,12 @@
 	<!-- Angular, jQuery / Order is important -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
-	<!-- <script type="text/javascript" src="js/moment.js"></script>
-	<script type="text/javascript" src="js/Chart.v2.js"></script> -->
-	<script type="text/javascript" src="js/Chart.js"></script>
-	<script type="text/javascript" src="js/angular-chart.js"></script>
-	<script src="js/hxp-directives.js"></script>
-	<script type="text/javascript" src="js/chart-controller.js"></script>
-	<script src="js/app.js"></script>
+	<!-- <script type="text/javascript" src="scripts/moment.js"></script>
+	<script type="text/javascript" src="scripts/Chart.v2.js"></script> -->
+	<script type="text/javascript" src="scripts/Chart.js"></script>
+	<script type="text/javascript" src="scripts/angular-chart.js"></script>
+	<script src="scripts/hxp-directives.js"></script>
+	<script type="text/javascript" src="scripts/chart-controller.js"></script>
+	<script src="scripts/app.js"></script>
 </body>
 </html>

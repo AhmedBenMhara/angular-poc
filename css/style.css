@@ -2,41 +2,24 @@
 	display: none !important;
 }
 
-body {
-	margin: 0 auto;
-	padding: 0 2%;
-	background: #FBFBFB;
-	width: 96%;
-	position: absolute;
-	min-height: 90%;
-}
-
 .title{
 	text-align: center;
 }
 
-/*
-.sensor {
-	height: 100%
-}
-*/
-
-.sensor .infodiv {
+.infodiv {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: space-around;
-	margin: 0 auto;
 	min-height: 140px;
 	max-height: 200px;
-	width: 96%;
 }
 
-.sensor .infodiv * {
+.infodiv * {
 	font-size: 19pt;
 }
 
-.sensor select {
+select {
 	min-width: 300px;
 }
 
@@ -52,21 +35,21 @@ option {
 	color: black;
 }
 
-.sensor .info {
+.info {
 	min-width: 460px;
 	text-align: center;
 	border: 2px #0F0 solid;
 }
-.sensor .info.alert {
+.info.alert {
 	border-color: #F00;
 }
 
-.sensor .info .date {
+.info .date {
 	margin: 0;
 }
 
-.sensor .info .temperature,
-.sensor .info .signal {
+.info .temperature,
+.info .signal {
 	display: inline-block;
 	vertical-align: top;
 	margin: 19px 33px 8px;
@@ -80,13 +63,8 @@ option {
 	font-weight: normal;
 }
 
-.sensor .graph {
-	display: flex;
-	/*flex-wrap: wrap;*/
-	/*align-items: stretch;*/
-	min-height: 400px;
-}
-.sensor .graph > * {
-	width: 100%;
-	max-height: 400px;
+.chart-container{
+	position: relative;
+	height: 300px;
+	margin: 19px 0;
 }
