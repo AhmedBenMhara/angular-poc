@@ -7,7 +7,7 @@
 		tw.set('host','vps161474.ovh.net');
 		//or multiples with ({params}) or (null, {params})
 		tw.set({
-			thing: 'SNCF.Resources',
+			thing: 'SNCF.API',
 			appKey: '39641e76-4626-45d5-be32-0ade70d93ebb'
 		});
 	}]);
@@ -24,7 +24,13 @@
 				ctrl.cur = ctrl.sensors[s];
 				break;
 			}
+			angular.forEach(ctrl.sensors,function(value, key){
+				tw.post("getAllDataForSensor",{name: key}).then(function(res){
+					value.data = res.data.rows;
+				});
+			});
 		});
+		
 	}]);
 	
 })();

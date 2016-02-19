@@ -68,3 +68,15 @@ option {
 	height: 300px;
 	margin: 19px 0;
 }
+table {
+	margin: 0 auto;
+	text-align: center;
+	border: 1px solid;
+}
+td,th {
+	border: 1px solid;
+	width: 142px;
+}
+tr.alert {
+	background-color: red;
+}

@@ -31,14 +31,21 @@
 					{{sensorCtrl.cur.lastData | date:"'reçu le 'dd/MM/yyyy' à 'HH:mm"}}</p>
 			</div>
 		</div>
+		<!-- 
 		<div class="filling-row chart-container" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
 		<canvas id="line" class="chart chart-line" chart-data="lineCtrl.data" chart-labels="lineCtrl.labels" 
     		chart-legend="true" chart-series="lineCtrl.series" chart-click="lineCtrl.onClick"></canvas>
     	</div>
-		<div class="filling-row chart-container" ng-controller="LineController as lineCtrl" ng-show="sensorCtrl.cur">
-		<canvas id="line" class="chart chart-line" chart-data="lineCtrl.data" chart-labels="lineCtrl.labels" 
-    		chart-legend="true" chart-series="lineCtrl.series" chart-click="lineCtrl.onClick"></canvas>
-    	</div>
+    	-->
+    	
+    	<table ng-show="sensorCtrl.cur.data">
+    		<tr><th>Date</th><th>Temp</th></tr>
+    		<tr ng-repeat="row in sensorCtrl.cur.data" ng-class="{alert: row.temperature>sensorCtrl.cur.highLimit || row.temperature<sensorCtrl.cur.lowLimit}">
+    			<td>{{row.timestamp | date:"dd/MM/yyyy HH:mm"}}</td>
+    			<td>{{row.temperature}} °C</td>
+    		</tr>
+    	</table>
+    	
 	</div>
 	
 	<!-- Angular, jQuery / Order is important -->
