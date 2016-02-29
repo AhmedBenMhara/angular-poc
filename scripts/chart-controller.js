@@ -14,6 +14,7 @@
 		      bezierCurveTension: 0.3,
 		      scaleType: 'date',
 		      useUTC: false,
+		      scaleDateFormat: "d mmm",
 		      scaleTimeFormat: 'H:MM',
 		      scaleDateTimeFormat: 'dddd d mmmm yyyy "à" HH:MM',
 		      lang: "fr",
