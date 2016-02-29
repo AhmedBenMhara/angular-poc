@@ -14,6 +14,11 @@
 		      bezierCurveTension: 0.3,
 		      scaleType: 'date',
 		      useUTC: false,
+		      scaleTimeFormat: 'H:MM',
+		      scaleDateTimeFormat: 'dddd d mmmm yyyy "à" HH:MM',
+		      lang: "fr",
+		      tooltipTemplate: "<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%=valueLabel%>°C, le <%=argLabel%>",
+		      multiTooltipTemplate: "<%=valueLabel%>°C : <%=argLabel%>",
 		      datasetStroke: false
 		    });
 	  }]);

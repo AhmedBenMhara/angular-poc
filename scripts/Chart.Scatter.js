@@ -17,7 +17,7 @@
 
 	var helpers = chartjs.helpers,
 		hlp = {
-			formatDateValue: function (date, tFormat, dFormat, useUtc) {
+			formatDateValue: function (date, tFormat, dFormat, useUtc, lang) {
 
 				date = new Date(+date);
 
@@ -34,10 +34,10 @@
 
 				if (hasTime) {
 
-					return dateFormat(date, tFormat || "h:MM", useUtc);
+					return dateFormat(date, tFormat || "h:MM", useUtc, lang);
 				} else {
 
-					return dateFormat(date, dFormat || "mmm d", useUtc);
+					return dateFormat(date, dFormat || "mmm d", useUtc, lang);
 				}
 			},
 
@@ -110,20 +110,32 @@
 			},
 			i18n = {
 				dayNames: [
+				    //en
 					"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
-					"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+					"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday",
+					//fr
+					"Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam",
+					"Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"
 				],
 				monthNames: [
+				    //en
 					"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec",
-					"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"
-				]
+					"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",
+					//fr
+					"Jan", "Fev", "Mar", "Avr", "Mai", "Juin", "Jul", "Aout", "Sep", "Oct", "Nov", "Dec",
+					"Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"
+				],
+				//Must match the order of the names
+				locales: ["en", "fr"]
 			};
 
 
 
 		// Regexes and supporting functions are cached through closure
-		return function (date, mask, utc) {
-
+		return function (date, mask, utc, lang) {
+			//set english as the default locale
+			var lang = lang ? i18n.locales.indexOf(lang) : i18n.locales.indexOf("en");
+			
 			// You can't provide utc if you skip other args (use the "UTC:" mask prefix)
 			if (arguments.length == 1 && Object.prototype.toString.call(date) == "[object String]" && !/\d/.test(date)) {
 				mask = date;
@@ -155,12 +167,12 @@
 				flags = {
 					d: d,
 					dd: pad(d),
-					ddd: i18n.dayNames[D],
-					dddd: i18n.dayNames[D + 7],
+					ddd: i18n.dayNames[D + 14*lang],
+					dddd: i18n.dayNames[D + (14*lang) + 7],
 					m: m + 1,
 					mm: pad(m + 1),
-					mmm: i18n.monthNames[m],
-					mmmm: i18n.monthNames[m + 12],
+					mmm: i18n.monthNames[m + 24*lang],
+					mmmm: i18n.monthNames[m + (24*lang) + 12],
 					yy: String(y).slice(2),
 					yyyy: y,
 					h: H % 12 || 12,
@@ -214,6 +226,7 @@
 		scaleDateFormat: "mmm d",
 		scaleTimeFormat: "h:MM",
 		scaleDateTimeFormat: "mmm d, yyyy, hh:MM",
+		lang: "en",
 
 		// LINES
 		datasetStroke: true,				// Boolean - Whether to show a stroke for datasets
@@ -223,8 +236,6 @@
 
 		bezierCurve: true,				// Boolean - Whether the line is curved between points
 		bezierCurveTension: 0.4,		// Number - Tension of the bezier curve between points
-
-
 
 		// POINTS
 		pointDot: true,					// Boolean - Whether to show a dot for each point
@@ -631,7 +642,7 @@
 
 		argToString: function (arg) {
 
-			return dateFormat(+arg, this.dateTimeFormat, this.useUtc);
+			return dateFormat(+arg, this.dateTimeFormat, this.useUtc, this.lang);
 		},
 
 		generateXLabels: function () {
@@ -644,7 +655,7 @@
 
 				var value = graphMin + stepValue * index;
 
-				labelsArray[index] = hlp.formatDateValue(value, this.timeFormat, this.dateFormat, this.useUtc);
+				labelsArray[index] = hlp.formatDateValue(value, this.timeFormat, this.dateFormat, this.useUtc, this.lang);
 			}, this);
 
 			this.xLabels = labelsArray;
@@ -842,7 +853,8 @@
 				useUtc: this.options.useUtc,
 				dateFormat: this.options.scaleDateFormat,
 				timeFormat: this.options.scaleTimeFormat,
-				dateTimeFormat: this.options.scaleDateTimeFormat
+				dateTimeFormat: this.options.scaleDateTimeFormat,
+				lang: this.options.lang
 			};
 
 			return this.options.scaleType === "date"
