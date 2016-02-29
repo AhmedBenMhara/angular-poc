@@ -3,11 +3,11 @@
 	var mod = angular.module('twServices',[]);
 	
 	mod.provider('thingworx', function ThingworxProvider(){
-		var tw = this;
-		tw.host = "";
-		tw.appKey = "";
-		tw.thing = "";
-		
+		var tw = {
+			host: "",
+			appKey: "",
+			thing: ""
+		};
 		this.set = function(name, params){
 			if(!params || !name){
 				params = name || params;
@@ -20,11 +20,12 @@
 		};
 		
 		this.$get = function(){
-			return {
-				'host': tw.host,
-				'appKey': tw.appKey,
-				'thing': tw.thing
-			};
+			return tw;
+//			return {
+//				'host': tw.host,
+//				'appKey': tw.appKey,
+//				'thing': tw.thing
+//			};
 		};
 	});
 	
@@ -36,11 +37,7 @@
 			},
 			
 			post: function(twService, params){
-				var promise;
-				
-				promise = $http.post("//"+tw.host+"/Thingworx/Things/"+tw.thing+"/Services/"+twService+"?appKey="+tw.appKey, params || {});
-				
-				return promise;
+				return $http.post("//"+tw.host+"/Thingworx/Things/"+tw.thing+"/Services/"+twService+"?appKey="+tw.appKey, params || {});
 			}
 		}
 		

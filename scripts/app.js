@@ -24,9 +24,18 @@
 				ctrl.cur = ctrl.sensors[s];
 				break;
 			}
-			angular.forEach(ctrl.sensors,function(value, key){
+			angular.forEach(ctrl.sensors,function(sensor, key){
+				sensor.chart = {
+						data: []
+				};
 				tw.post("getAllDataForSensor",{name: key}).then(function(res){
-					value.data = res.data.rows;
+					angular.forEach(res.data.rows.slice(0,-2), function(value, ind){
+						if(value.timestamp > 0 && value.temperature !== undefined)
+							sensor.chart.data.push({
+								x: value.timestamp,
+								y: value.temperature
+							});
+					});
 				});
 			});
 		});

@@ -2,6 +2,11 @@
 	display: none !important;
 }
 
+body {
+	padding: 0 2%;
+	background: #FBFBFB;
+}
+
 .title{
 	text-align: center;
 }
