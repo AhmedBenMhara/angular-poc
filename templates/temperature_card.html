@@ -1,0 +1,10 @@
+<!-- TODO utiliser flex au lieu de inline-block -->
+<div class="info" ng-class="{alert : sensorCtrl.cur.alert}">
+	<p class="temperature">
+		{{sensorCtrl.cur.temperature}} °C <br />
+		<span class="mini">min: {{sensorCtrl.cur.lowLimit}} | max: {{sensorCtrl.cur.highLimit}}</span>
+	</p>
+	<p class="signal">{{sensorCtrl.cur.signal}} dB</p>
+	<br />
+	<p class="date">{{sensorCtrl.cur.lastData | date:"'reçu le 'dd/MM/yyyy' à 'HH:mm"}}</p>
+</div>

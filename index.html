@@ -19,22 +19,14 @@
 				ng-options="s as s.place for s in sensorCtrl.sensors" hxp-option-class="{ 'alert' : alert, 'good' : !alert }"ng-cloak>
 				<!-- <option value="">Sélectionner un capteur</option> -->
 			</select>
-			<!-- TODO utiliser flex au lieu de inline-block -->
-			<div class="info" ng-class="{alert : sensorCtrl.cur.alert}">
-				<p class="temperature">
-					{{sensorCtrl.cur.temperature}} °C
-					<br/><span class="mini">min: {{sensorCtrl.cur.lowLimit}} | max: {{sensorCtrl.cur.highLimit}}</span></p>
-				<p class="signal">
-					{{sensorCtrl.cur.signal}} dB</p>
-				<br/>
-				<p class="date">
-					{{sensorCtrl.cur.lastData | date:"'reçu le 'dd/MM/yyyy' à 'HH:mm"}}</p>
-			</div>
+			
+<!-- 			<hxp-temperature-card-required></hxp-temperature-card-required> -->
+			<hxp-temperature-card-scoped sensor="sensorCtrl.cur"></hxp-temperature-card-scoped>
 		</div>
 
 
 		<div class="filling-row" ng-show="sensorCtrl.cur">
-		<canvas class="chart chart-scatter" chart-data="[sensorCtrl.cur.chart.data]"
+			<canvas class="chart chart-scatter" chart-data="[sensorCtrl.cur.chart.data]"
     		chart-legend="true" chart-series="['Temp']"></canvas>
     	</div>
     	    	

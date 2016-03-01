@@ -42,4 +42,24 @@
 		
 	}]);
 	
+	//Nécessite la présence du Controller
+	app.directive("hxpTemperatureCardRequired", function() {
+		return {
+			restrict: 'E',
+			require: "^^SensorController",
+			templateUrl: "templates/temperature_card.html"
+		};
+	});
+	
+	//Plus flexible, l'objet est passé en paramètre mais plus lourd, cela crée un nouveau scope (avec le watch et les passages de digest qui vont avec)
+	app.directive("hxpTemperatureCardScoped", function() {
+		return {
+			restrict: 'E',
+			scope: {
+				sensor: "<" //1-way binding, plus léger que le 2-way (=) qui n'est pas nécessaire dans ce cas (la valeur ne change pas de ce coté du scope)
+			},
+			templateUrl: "templates/scoped_temperature_card.html"
+		};
+	});
+	
 })();
